@@ -31,7 +31,7 @@ namespace Application.Features.ProgramingLangue.Commands.UpdateProgramingLangue
             public async Task<UpdatedProgrammingLanguageDtos> Handle(UpdateProgramingLangueCommand request, CancellationToken cancellationToken)
             {
                 var entity = request.Adapt<ProgramingLangues>();
-                _programingLangueBusinessRules.ProgramingLangueCheckEntityIfEmpty(entity);
+                await _programingLangueBusinessRules.ProgramingLangueCheckEntityIfEmpty(entity);
                 await _programingLangueBusinessRules.ProgramingLangueCheckNameIsExist(entity.Name);
                 var updatedProgramLanguesEntity = await _programingLanguesRepository.UpdateAsync(entity);
                 return updatedProgramLanguesEntity.Adapt<UpdatedProgrammingLanguageDtos>();

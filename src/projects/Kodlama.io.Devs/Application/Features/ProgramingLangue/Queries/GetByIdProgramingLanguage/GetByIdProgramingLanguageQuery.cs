@@ -30,7 +30,7 @@ namespace Application.Features.ProgramingLangue.Queries.GetByIdProgramingLanguag
             public async Task<ProgramingLanguageGetByIdDtos> Handle(GetByIdProgramingLanguageQuery request, CancellationToken cancellationToken)
             {
                 var result = await _programingLanguesRepository.GetAsync(g => g.Id == request.Id);
-                _programingLangueBusinessRules.ProgramingLangueCheckEntityIfEmpty(result);
+                _programingLangueBusinessRules.ProgramingLangueShouldExistWhenRequested(result);
                 return result.Adapt<ProgramingLanguageGetByIdDtos>();
             }
         }

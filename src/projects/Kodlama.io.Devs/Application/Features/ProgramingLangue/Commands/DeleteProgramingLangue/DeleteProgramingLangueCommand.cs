@@ -29,7 +29,7 @@ namespace Application.Features.ProgramingLangue.Commands.DeleteProgramingLangue
             public async Task<DeletedProgrammingLanguageDtos> Handle(DeleteProgramingLangueCommand request, CancellationToken cancellationToken)
             {
                 var programLanguesEntity = await _programingLanguesRepository.GetAsync(g => g.Id == request.Id);
-                _programingLangueBusinessRules.ProgramingLangueCheckEntityIfEmpty(programLanguesEntity);
+                _programingLangueBusinessRules.ProgramingLangueShouldExistWhenRequested(programLanguesEntity);
                 var deleteProgramingLanguage = await _programingLanguesRepository.DeleteAsync(programLanguesEntity);
                 return deleteProgramingLanguage.Adapt<DeletedProgrammingLanguageDtos>();
             }

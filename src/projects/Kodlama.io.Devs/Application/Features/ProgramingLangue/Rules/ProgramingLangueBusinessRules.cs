@@ -34,7 +34,12 @@ namespace Application.Features.ProgramingLangue.Rules
             var result = await _programingLanguesRepository.GetAsync(b => b.Name.ToLower() == name.ToLower());
             if (result != null) throw new BusinessException("Program Language Name does exists.");
         }
-        public void ProgramingLangueCheckEntityIfEmpty(ProgramingLangues programingLangues)
+        public async Task ProgramingLangueCheckEntityIfEmpty(ProgramingLangues programingLangues)
+        {
+            var result = await _programingLanguesRepository.GetAsync(b => b.Id == programingLangues.Id);
+            if (result == null) throw new BusinessException("Entity does not exists.");
+        }
+        public void ProgramingLangueShouldExistWhenRequested(ProgramingLangues programingLangues)
         {
             if (programingLangues == null) throw new BusinessException("Entity does not exists.");
         }
