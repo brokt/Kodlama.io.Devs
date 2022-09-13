@@ -16,6 +16,15 @@ namespace Persistence
                                                      options.UseSqlServer(
                                                          configuration.GetConnectionString("KodlamaioConnectionString")));
             services.AddScoped<IProgramingLanguesRepository, ProgramingLanguesRepository>();
+            services.AddScoped<IProgramingTechnologiesRepository, ProgramingTechnologiesRepository>();
+            services.AddScoped<IUserSocialMediasRepository, UserSocialMediasRepository>();
+
+            #region Core Security
+            services.AddScoped<IUsersRepository, UsersRepository>();
+            services.AddScoped<IOperationClaimsRepository, OperationClaimsRepository>();
+            services.AddScoped<IUserOperationClaimsRepository, UserOperationClaimsRepository>();
+            services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+            #endregion
 
             return services;
         }

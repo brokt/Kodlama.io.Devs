@@ -1,4 +1,5 @@
 ﻿using Application.Features.ProgramingLangue.Dtos;
+using Application.Features.ProgramingTechnology.Dtos;
 using Core.Persistence.Paging;
 using System;
 using System.Collections.Generic;
@@ -10,6 +11,6 @@ namespace Application.Features.ProgramingLangue.Models
 {
     public class ProgramingLanguageListModel : BasePageableModel
     {
-        public IList<ProgramingLanguageListDtos> Items { get; set; }
+        public IList<ProgrammingTechnologyListDtos> Items { get; set; }
     }
 }
